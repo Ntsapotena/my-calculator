@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d18">
+    <title>Orbit — Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="calculator" aria-label="Calculator">
+        <header class="calculator-header">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">✳</span>
+                <div>
+                    <p class="eyebrow">YOUR EVERYDAY</p>
+                    <h1>Calculator</h1>
+                </div>
+            </div>
+            <span class="mode-chip"><span class="status-dot"></span> STANDARD</span>
+        </header>
+
+        <section class="display-panel" aria-label="Calculator display">
+            <div class="display-meta">
+                <span>RESULT</span>
+                <span id="status" aria-live="polite">READY</span>
+            </div>
+            <input
+                type="text"
+                id="display"
+                value="0"
+                readonly
+                aria-label="Calculator display"
+                aria-live="polite"
+                aria-atomic="true"
+            >
+        </section>
+
+        <div class="buttons" aria-label="Calculator buttons">
+            <button class="clear" data-action="clear" aria-label="Clear all">AC</button>
+            <button class="utility" data-action="delete" aria-label="Delete last digit">DEL</button>
+            <button class="utility" data-value="%" aria-label="Remainder">%</button>
+            <button class="operator" data-value="/" aria-label="Divide">÷</button>
+
+            <button data-value="7">7</button>
+            <button data-value="8">8</button>
+            <button data-value="9">9</button>
+            <button class="operator" data-value="*" aria-label="Multiply">×</button>
+
+            <button data-value="4">4</button>
+            <button data-value="5">5</button>
+            <button data-value="6">6</button>
+            <button class="operator" data-value="-" aria-label="Subtract">−</button>
+
+            <button data-value="1">1</button>
+            <button data-value="2">2</button>
+            <button data-value="3">3</button>
+            <button class="operator" data-value="+" aria-label="Add">+</button>
+
+            <button class="zero" data-value="0">0</button>
+            <button data-value="." aria-label="Decimal point">.</button>
+            <button class="equals" data-action="calculate" aria-label="Calculate">=</button>
+        </div>
+
+        <footer class="calculator-footer">
+            <span><kbd>ENTER</kbd> to calculate</span>
+            <span>MADE FOR THE MOMENT <span class="footer-sparkle" aria-hidden="true">✦</span></span>
+        </footer>
+    </main>
+</body>
+</html>

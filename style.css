@@ -1,0 +1,308 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+    color-scheme: dark;
+    font-family: "Manrope", "Segoe UI", sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    --text: #f4f5fb;
+    --muted: #858ba2;
+    --panel: rgba(20, 25, 42, 0.88);
+    --key: #22283d;
+    --key-hover: #2d3550;
+    --accent: #b9f278;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 28px 18px;
+    overflow-x: hidden;
+    color: var(--text);
+    background:
+        radial-gradient(ellipse at 15% 18%, rgba(83, 74, 164, 0.26), transparent 35%),
+        radial-gradient(ellipse at 85% 83%, rgba(39, 113, 105, 0.2), transparent 34%),
+        #090d18;
+}
+
+body::before,
+body::after {
+    position: fixed;
+    z-index: -1;
+    width: 250px;
+    height: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.055);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+}
+
+body::before {
+    top: 8%;
+    right: 9%;
+    box-shadow: 0 0 0 28px rgba(255, 255, 255, 0.018), 0 0 0 58px rgba(255, 255, 255, 0.012);
+}
+
+body::after {
+    bottom: 8%;
+    left: 8%;
+    width: 140px;
+    height: 140px;
+    box-shadow: 0 0 0 24px rgba(255, 255, 255, 0.018), 0 0 0 50px rgba(255, 255, 255, 0.012);
+}
+
+.calculator {
+    width: min(100%, 390px);
+    padding: 27px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 28px;
+    background: var(--panel);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.48), inset 0 1px rgba(255, 255, 255, 0.055);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+.calculator-header,
+.brand,
+.display-meta,
+.calculator-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.calculator-header {
+    margin-bottom: 25px;
+}
+
+.brand {
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.brand-mark {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid rgba(185, 242, 120, 0.24);
+    border-radius: 15px;
+    color: var(--accent);
+    background: rgba(185, 242, 120, 0.09);
+    font-size: 24px;
+}
+
+.eyebrow,
+h1 {
+    margin: 0;
+}
+
+.eyebrow {
+    margin-bottom: 2px;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.17em;
+}
+
+h1 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.mode-chip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 999px;
+    color: #b1b6c7;
+    background: rgba(255, 255, 255, 0.035);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(185, 242, 120, 0.75);
+}
+
+.display-panel {
+    min-width: 0;
+    margin-bottom: 17px;
+    padding: 16px 17px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.055);
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(8, 11, 22, 0.8), rgba(14, 18, 32, 0.8));
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.display-meta {
+    margin-bottom: 9px;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+}
+
+#status {
+    color: #a6adbf;
+}
+
+#display {
+    display: block;
+    width: 100%;
+    height: 54px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    outline: 0;
+    color: var(--accent);
+    background: transparent;
+    font-family: "DM Mono", "Consolas", monospace;
+    font-size: clamp(30px, 9vw, 42px);
+    font-weight: 400;
+    letter-spacing: -0.06em;
+    text-align: right;
+    text-overflow: ellipsis;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+button {
+    min-width: 0;
+    height: 61px;
+    border: 1px solid rgba(255, 255, 255, 0.035);
+    border-radius: 16px;
+    color: #f1f2f8;
+    background: var(--key);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.16);
+    font: 600 19px "Manrope", "Segoe UI", sans-serif;
+    cursor: pointer;
+    transition: background 150ms ease, border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: var(--key-hover);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: none;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.utility,
+.operator {
+    color: #c6c9d6;
+    background: #292f45;
+}
+
+.operator {
+    color: #d6f5b3;
+}
+
+.clear {
+    color: #ff9d9d;
+    background: rgba(242, 102, 112, 0.13);
+}
+
+.clear:hover {
+    background: rgba(242, 102, 112, 0.23);
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+.equals {
+    grid-column: span 1;
+    border-color: rgba(185, 242, 120, 0.5);
+    color: #17200f;
+    background: var(--accent);
+    box-shadow: 0 5px 18px rgba(185, 242, 120, 0.15);
+    font-size: 23px;
+}
+
+.equals:hover {
+    border-color: #d4ff9e;
+    background: #cbfa99;
+}
+
+.calculator-footer {
+    margin-top: 19px;
+    color: #777e94;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+kbd {
+    padding: 3px 5px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 5px;
+    color: #b3b9ca;
+    background: rgba(255, 255, 255, 0.04);
+    font: 600 8px "Manrope", "Segoe UI", sans-serif;
+}
+
+.footer-sparkle {
+    margin-left: 3px;
+    color: var(--accent);
+}
+
+@media (max-width: 380px) {
+    .calculator {
+        padding: 21px;
+        border-radius: 24px;
+    }
+
+    button {
+        height: 56px;
+        border-radius: 14px;
+    }
+
+    .buttons {
+        gap: 8px;
+    }
+
+    .calculator-footer {
+        font-size: 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
